@@ -1,1 +1,6 @@
-- npm -g install live-server
+## Important commands
+
+- `npm -g install live-server`
+- `babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch`
+- `live-server public/`
+
