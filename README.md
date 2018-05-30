@@ -1,2 +1,1 @@
-# React-Todo
-A simple ReactJS Todo list.
+- npm -g install live-server
