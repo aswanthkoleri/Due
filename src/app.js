@@ -66,7 +66,7 @@ const addOption=(e)=>{
     const optionValue=e.target.elements.optionInput.value;
     if(optionValue){
     app.options.push(optionValue);
-    e.target.elements.optionInput.value;
+    e.target.elements.optionInput.value="";
     renderTemplate();
     }
     console.log("Option added ");
@@ -76,12 +76,18 @@ const clearList=()=>{
     app.options = [];
     renderTemplate();
 }
+const getRandom=()=>{
+    const randomOption=Math.floor(Math.random()*app.options.length);
+    const selected = app.options[randomOption];
+    alert(selected);
+}
 const appRoot = document.getElementById('app');
 const renderTemplate= () =>{
 const todoTemplate = (
     <div>
     <h1>{app.title}</h1>
     <h2>{app.subtitle} {app.options.length}</h2>
+    <button disabled={app.options.length===0} onClick={getRandom}>What should I do ?</button>
     <button onClick={clearList}>Clear</button> 
     <ol>
     {

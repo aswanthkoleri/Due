@@ -65,7 +65,7 @@ var addOption = function addOption(e) {
     var optionValue = e.target.elements.optionInput.value;
     if (optionValue) {
         app.options.push(optionValue);
-        e.target.elements.optionInput.value;
+        e.target.elements.optionInput.value = "";
         renderTemplate();
     }
     console.log("Option added ");
@@ -74,6 +74,11 @@ var addOption = function addOption(e) {
 var clearList = function clearList() {
     app.options = [];
     renderTemplate();
+};
+var getRandom = function getRandom() {
+    var randomOption = Math.floor(Math.random() * app.options.length);
+    var selected = app.options[randomOption];
+    alert(selected);
 };
 var appRoot = document.getElementById('app');
 var renderTemplate = function renderTemplate() {
@@ -91,6 +96,11 @@ var renderTemplate = function renderTemplate() {
             app.subtitle,
             " ",
             app.options.length
+        ),
+        React.createElement(
+            "button",
+            { disabled: app.options.length === 0, onClick: getRandom },
+            "What should I do ?"
         ),
         React.createElement(
             "button",
