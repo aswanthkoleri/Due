@@ -1,4 +1,4 @@
-const title = "React Todo";
+const title = "Due";
 const subtitle = "Do what you have to do !";
 // let options = ["Thing one","Thing two"];
 class IndecisionApp extends React.Component {
@@ -6,19 +6,25 @@ class IndecisionApp extends React.Component {
         super(props);
         this.removeAll=this.removeAll.bind(this);
         this.state = {
-            options : ["Thing one ","Thing two "]
+            options : props.options
         };
         this.getRandom=this.getRandom.bind(this);
         this.addOption=this.addOption.bind(this);
+        this.removeOne=this.removeOne.bind(this);
     }
     removeAll(){
-        this.setState(()=>{
-            return {
-                options : []
-            };
+        this.setState(()=>({ options : [] }));
+    }
+    removeOne(optionToRemove){
+        console.log("Its working",optionToRemove);
+        this.setState((prevState) =>{
+            return { 
+                options : prevState.options.filter((option)=>  {
+                    return optionToRemove !==option;
+                }
+            )}
         });
     }
-
     getRandom(){
         const randomOption=Math.floor(Math.random()*this.state.options.length);
         const selected = this.state.options[randomOption];
@@ -51,7 +57,9 @@ class IndecisionApp extends React.Component {
             removeAll={this.removeAll}
             getRandom={this.getRandom}
             />
-            <Options options={this.state.options}/>
+            <Options options={this.state.options} 
+            removeOne={this.removeOne}
+            />
             <AddOption
             addOption={this.addOption}
             />
@@ -60,61 +68,71 @@ class IndecisionApp extends React.Component {
         return jsx;
     }
 }
-class Header extends React.Component {
-    render() {
-        const content=(
-            <div>
-            <h1>{this.props.title}</h1>
-            <h3>{this.props.subtitle}</h3>
-            </div>
-        );
-        return content; 
-    }
+
+IndecisionApp.defaultProps = {
+    options : []
+};
+const Header =(props)=>{
+    const content=(
+        <div>
+        <h1>{props.title}</h1>
+        <h3>{props.subtitle}</h3>
+        </div>
+    );
+    return content; 
 }
 
-class Action extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    render() {
-        const content=(
-            <div>
-            <button 
-            onClick={this.props.getRandom}
-            disabled={!this.props.hasOptions}
-            >What should I do ?</button>
-            <button
-            onClick={this.props.removeAll}
-            >Clear</button>
-            </div>
-        );
-        return content;
-    }
+/* To set default title  */
+
+Header.defaultProps = {
+    title : 'This is the default Header '
 }
 
-class Options extends React.Component {
-    render(){
-    const content = (
+const Action=(props)=>{
+    const content=(
+        <div>
+        <button 
+        onClick={props.getRandom}
+        disabled={!props.hasOptions}
+        >What should I do ?</button>
+        <button
+        onClick={props.removeAll}
+        >Clear</button>
+        </div>
+    );
+    return content;
+}
+
+const Options =(props)=>{
+const content = (
     <div>
     You list : 
     {
-        this.props.options.map((option)=> <Option key={option} text={option}/> )
+        props.options.map((option)=> ( 
+            <Option 
+            key={option} 
+            text={option}
+            removeOne={props.removeOne}
+            /> 
+            ))
     }
     </div>);
-        return content;
-    }
+    return content;
 }
-class Option extends React.Component {
-    render(){
-        const content=(
+
+const Option =(props)=>{
+    const content=(
         <div>
-        {this.props.text}
+        {props.text}
+        <button onClick={(e) => props.removeOne(props.text)}>
+        Remove 
+        </button>
         </div>
         );
         console.log("work");
         return content;
-    }
-} 
+}
+
 class AddOption extends React.Component {
     constructor(props){
         super(props);
@@ -123,6 +141,7 @@ class AddOption extends React.Component {
             error : undefined
         }
     }
+
     addOption(e){
         e.preventDefault();
         const input = e.target.elements.optionInput.value;
