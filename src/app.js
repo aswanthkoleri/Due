@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
-import './assets/styles.scss';
+import 'normalize.css/normalize.css';
 
+import './assets/styles.scss';
 
 const Layout =(props)=>{
     return (
         <div>
-        <p>Header</p>
         {props.children}
-        <p>footer</p>
         </div>
     ); 
 };

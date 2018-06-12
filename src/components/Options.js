@@ -2,7 +2,7 @@ import React from 'react';
 import Option from './Option';
 
 export default (props)=>(
-    <div>
+    <div className="container">
     You list : 
     {
         props.options.map((option)=> ( 
@@ -10,6 +10,7 @@ export default (props)=>(
             key={option} 
             text={option}
             removeOne={props.removeOne}
+            
             /> 
             ))
     }
