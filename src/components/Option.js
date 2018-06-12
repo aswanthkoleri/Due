@@ -1,8 +1,10 @@
 import React from 'react';
 
 export default (props)=>(
-    <div >
-    {props.text}
+    <div className="option" >
+    <div className="option__text">
+    {props.count}. {props.text}
+    </div>
     <button
     className="button button--link"
      onClick={(e) => props.removeOne(props.text)}>

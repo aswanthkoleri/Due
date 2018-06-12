@@ -1,16 +1,18 @@
 import React from 'react';
 
 export default (props)=>(
-    <div className="container">
+    <div>
     <button 
     onClick={props.getRandom}
     disabled={!props.hasOptions}
     className="big-button"
-    >What should I do ?</button>
-    
+    >PICK RANDOM </button>
+    <div className="widget-header">
+    <h3>ITEMS DUE : </h3>
     <button
     className="button button--link"
     onClick={props.removeAll}
-    >Clear</button>
+    >CLEAR</button>
+    </div>
     </div>
 );

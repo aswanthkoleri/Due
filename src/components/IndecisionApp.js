@@ -93,24 +93,28 @@ export default class IndecisionApp extends React.Component {
     render() {
         
         const jsx = (
-            <div>
+            <div >
             <Header title={title} subtitle={subtitle}/>
+            <div className="container">
             <Action 
             hasOptions={this.state.options.length > 0} 
             options={this.state.options}
             removeAll={this.removeAll}
             getRandom={this.getRandom}
             />
+            <div className="widget">
             <Options options={this.state.options} 
             removeOne={this.removeOne}
             />
             <AddOption
             addOption={this.addOption}
             />
+            </div>  
             <OpenModal
             optionSelected={this.state.optionSelected}
             closeModal={this.closeModal}
              />
+             </div>
             </div>
         );
         return jsx;
