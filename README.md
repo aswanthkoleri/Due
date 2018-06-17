@@ -1,5 +1,6 @@
 # DUE 
 
+![Logo](https://github.com/aswanthkoleri/Due/blob/master/logo/png/icon-left-font.png)
 > Organize your works fast and efficient. 
 
 Due is a very simple and fast To-do list made using ReactJS. This app is made as a part of my React JS learning. It is an easy to use app which has very minimalistic features.
