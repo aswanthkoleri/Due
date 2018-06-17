@@ -1,6 +1,6 @@
 # DUE
 
-<img src="https://github.com/aswanthkoleri/Due/blob/master/logo/png/icon-left-font.png" width = "400" height= "300">
+<img src="logo/png/icon-left-font.png" width = "400" height= "300">
 <br>
 
 > Organize your works fast and efficient. 
@@ -23,6 +23,10 @@ Some of the features in the app are :-
 - `yarn run build-server`
 
 The app will be up and running on the server mentioned in terminal.
+## Screenshots
 
+![screenshot1](screenshots/1.png)
+![screenshot2](screenshots/2.png)
+![screenshot3](screenshots/3.png)
 ## Contributions 
 If you find any flaws in the app do bring it up as an issue and contributions will be accepted from you after proper review.Your contributions might be helpful. :smile:

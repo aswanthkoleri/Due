@@ -1,6 +1,6 @@
 # DUE
 
-<img src="https://github.com/aswanthkoleri/Due/blob/master/logo/png/icon-left-font.png" width = "400" height= "300">
+<img src="logo/png/icon-left-font.png" width = "400" height= "300">
 <br>
 
 > Organize your works fast and efficient. 
